@@ -1,0 +1,218 @@
+header {
+    background-color: #f8f8f8;
+    color: #1d3872;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    font-family: italic;
+}
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+.filtro {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    background-color: #1d3872;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.filtro h2 {
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.filtro-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.filtro-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.filtro-item label {
+    color: #fff;
+    font-weight: bold;
+}
+
+.filtro-item select,
+.filtro-item input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+
+.tabela {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.tabela th,
+.tabela td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.tabela th {
+    background-color: #1d3872;
+    color: #fff;
+}
+
+.tabela tr:hover {
+    background-color: #f5f5f5;
+}
+
+.botoes-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 20px 5% 0 0;
+}
+
+.botao {
+    background-color: #fff;
+    color: #0056b3;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.botao:hover {
+    background-color: #e0e0e0;
+}
+
+.botao-limpar {
+    background-color: #e6e6e6;
+    color: #1d3872;
+}
+
+.botao-limpar:hover {
+    background-color: #d9d9d9;
+}
+
+.pdf-link {
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.pdf-link:hover {
+    opacity: 0.8;
+}
+
+.botao-detalhes {
+    background-color: #dc3545;  /* Cor vermelha para indicar PDF */
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.botao-detalhes:hover {
+    background-color: #c82333;
+}
+
+.logo-esquerda {
+    height: 60px; /* ajuste conforme necessário */
+    margin-right: 20px; /* espaço entre a logo e o título */
+}
+
+.cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 30px;
+    background: #fff;
+}
+
+.cabecalho-esquerda {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-municipio {
+    height: 70px; /* ajuste conforme necessário */
+}
+
+.texto-municipio {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2em;
+    color: #1d3872;
+    margin-left: 8px;
+}
+
+.texto-municipio strong {
+    font-size: 1.5em;
+    color: #1d3872;
+}
+
+.titulo-cabecalho {
+    flex: 1;
+    text-align: center;
+    font-style: italic;
+    font-size: 2.2em;
+    color: #1d3872;
+    margin: 0 30px 0 30px;
+    font-family: Arial, sans-serif;
+}
+
+.btn-acessibilidade {
+    background: #e9ecf3;
+    color: #1e222b;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 18px;
+    font-size: 1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s;
+}
+.btn-acessibilidade:hover {
+    background: #1d3872;
+}
+
+body.contraste-alto {
+    background: #000 !important;
+    color: #fff !important;
+}
+
+body.contraste-alto header,
+body.contraste-alto .filtro,
+body.contraste-alto .tabela {
+    background: #000 !important;
+    color: #fff !important;
+}
+
+body.contraste-alto .btn-acessibilidade {
+    background: #fff;
+    color: #000;
+}

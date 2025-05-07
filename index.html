@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMENDAS PARLAMENTARES</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="cabecalho-esquerda">
+            <img src="Logo.png" alt="Brasão de Renascença" class="logo-municipio" width="300px" height="auto">
+        </div>
+        <h1 class="titulo-cabecalho">Emendas Parlamentares</h1>
+        <button class="btn-acessibilidade">
+            <span aria-hidden="true">♿</span> Acessibilidade
+        </button>
+    </header>
+    
+    <div class="filtro">
+        <h2>Filtro de Pesquisa</h2>
+        <div class="filtro-grid">
+            <div class="filtro-item">
+                <label for="origem">Origem</label>
+                <select name="origem" id="origem">
+                    <option value="" disabled selected>Selecione uma origem</option>
+                    <option value="federal">Federal</option>
+                    <option value="estadual">Estadual</option>
+                </select>
+            </div>
+
+            <div class="filtro-item">
+                <label for="tipoProposta">Tipo de Proposta</label>
+                <select name="tipoProposta" id="tipoProposta">
+                    <option value="" disabled selected>Selecione tipo de proposta</option>
+                    <option value="incremental">Incremental</option>
+                    <option value="supressiva">Supressiva</option>
+                    <option value="substitutiva">Substitutiva</option>
+                    <option value="aditiva">Aditiva</option>
+                    <option value="modificativa">Modificativa</option>
+                    <option value="reposicao">Reposição</option>
+                    <option value="equipamento">Equipamento</option>
+                    <option value="reversao">Reversão</option>
+                </select>
+            </div>
+
+            <div class="filtro-item">
+                <label for="ano">Ano</label>
+                <select name="ano" id="ano">
+                    <option value="" disabled selected>Selecione um ano</option>
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                </select>
+            </div>
+
+            <div class="filtro-item">
+                <label for="tipoEmenda">Tipo de Emenda</label>
+                <select name="tipoEmenda" id="tipoEmenda">
+                    <option value="" disabled selected>Selecione um tipo de emenda</option>
+                    <option value="individual">Individual</option>
+                    <option value="bancada">Bancada</option>
+                    <option value="programa">Programa</option>
+                    <option value="relatoria">Relatoria</option>
+                    <option value="bancadaObrigatoria">Bancada Obrigatoria</option>
+                    <option value="modificativa">Modificativa</option>
+                    <option value="reposicao">Reposição</option>
+                    <option value="comissao">Comissão</option>
+                    <option value="reversao">Reversão</option>
+                </select>
+            </div>
+            <div class="filtro-item">
+                <label for="formaRepasse">Forma de Repasse</label>
+                <select name="formaRepasse" id="formaRepasse">
+                    <option value="" disabled selected>Selecione uma forma de repasse</option>
+                    <option value="especial">Transferência Especial</option>
+                    <option value="fundo">Transferência Fundo a Fundo</option>
+                    <option value="convenio">Convênio</option>
+                    <option value="contratoRepasse">Contrato de Repasse</option>
+                    <option value="termoFomento">Termo de Fomento</option>
+                    <option value="termoColaboracao">Termo de Colaboração</option>
+                    <option value="acordoCooperacao">Acordo de Cooperação Técnica</option>
+                </select>
+            </div>
+
+            <div class="filtro-item">
+                <label for="numeroEmenda">Número da Emenda</label>
+                <input type="number" name="numeroEmenda" id="numeroEmenda">
+            </div>
+
+            <div class="filtro-item">
+                <label for="convenio">Número do Convênio</label>
+                <input type="number" name="convenio" id="convenio">
+            </div>
+
+            <div class="filtro-item">
+                <label for="autor">Nome do Autor</label>
+                <input type="text" name="autor" id="autor">
+            </div>
+
+            <div class="filtro-item">
+                <label for="funcao">Função de Governo</label>
+                <select name="funcao" id="funcao">
+                    <option value="" disabled selected>Selecione uma função</option>
+                    <option value="saude">Saúde</option>
+                    <option value="educacao">Educação</option>
+                    <option value="transporte">Transporte</option>
+                    <option value="previdencia">Previdência</option>
+                    <option value="outros">Outros</option>
+                </select>
+            </div>
+
+            <div class="filtro-item">
+                <label for="valorRepasse">Valor do Repasse</label>
+                <input type="number" name="valorRepasse" id="valorRepasse">
+            </div>
+
+            <div class="filtro-item">
+                <label for="valorRepassado">Valor Repassado</label>
+                <input type="number" name="valorRepassado" id="valorRepassado">
+            </div>
+        </div>
+        <div class="botoes-container">
+            <button class="botao" onclick="buscar()">Buscar</button>
+            <button class="botao botao-limpar" onclick="limparFiltros()">Limpar Filtros</button>
+        </div>
+    </div>
+
+    <table class="tabela">
+        <thead>
+            <tr>
+                <th>Origem</th>
+                <th>Tipo Proposta</th>
+                <th>Ano</th>
+                <th>Tipo Emenda</th>
+                <th>Forma de Repasse</th>
+                <th>Número Emenda</th>
+                <th>Número Convênio</th>
+                <th>Nome Autor</th>
+                <th>Função Governo</th>
+                <th>Valor Repasse</th>
+                <th>Valor Repassado</th>
+                <th>Detalhes</th>
+            </tr>
+        </thead>
+        <tbody>
+        <!-- 2022 -->
+            <tr>
+                <td data-tipo="origem">Federal</td>
+                <td data-tipo="tipoProposta">Incremental</td>
+                <td data-tipo="ano">2022</td>
+                <td data-tipo="tipoEmenda">Individual</td>
+                <td data-tipo="formaRepasse">Transferência Fundo a Fundo</td>
+                <td data-tipo="numeroEmenda">37020012</td>
+                <td data-tipo="convenio"></td>
+                <td data-tipo="autor">LEANDRE</td>
+                <td data-tipo="funcao">Saúde</td>
+                <td data-tipo="valorRepasse">R$ 191.256,00</td>
+                <td data-tipo="valorRepassado">R$ 191.256,00</td>
+                <td data-tipo="detalhes">
+                    <button class="botao-detalhes" onclick="downloadPDF('/ANO 2022.190K.pdf')">
+                        Baixar PDF
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td data-tipo="origem">Federal</td>
+                <td data-tipo="tipoProposta">Incremental</td>
+                <td data-tipo="ano">2022</td>
+                <td data-tipo="tipoEmenda">Bancada</td>
+                <td data-tipo="formaRepasse">Transferência Fundo a Fundo</td>
+                <td data-tipo="numeroEmenda">71170009</td>
+                <td data-tipo="convenio"></td>
+                <td data-tipo="autor">BANCADA DO PARANA	</td>
+                <td data-tipo="funcao">Saúde</td>
+                <td data-tipo="valorRepasse">R$ 250.000,00</td>
+                <td data-tipo="valorRepassado">R$ 250.000,00</td>
+                <td data-tipo="detalhes">
+                    <button class="botao-detalhes" onclick="downloadPDF('pdf/ANO2022.250K.pdf')">
+                        Baixar PDF
+                    </button>
+                </td>
+            </tr> 
+            <tr>
+                <td data-tipo="origem">Federal</td>
+                <td data-tipo="tipoProposta">Incremental</td>
+                <td data-tipo="ano">2022</td>
+                <td data-tipo="tipoEmenda">Individual</td>
+                <td data-tipo="formaRepasse">Transferência Fundo a Fundo</td>
+                <td data-tipo="numeroEmenda">38360002</td>
+                <td data-tipo="convenio"></td>
+                <td data-tipo="autor">PAULO EDUARDO MARTINS</td>
+                <td data-tipo="funcao">Saúde</td>
+                <td data-tipo="valorRepasse">R$ 100.000,00</td>
+                <td data-tipo="valorRepassado">R$ 100.000,00</td>
+                <td data-tipo="detalhes">
+                    <button class="botao-detalhes" onclick="downloadPDF('pdf/ANO2022.100K.pdf')">
+                        Baixar PDF
+                    </button>
+                </td>
+            </tr> 
+            <tr>
+                <td data-tipo="origem">Federal</td>
+                <td data-tipo="tipoProposta">Incremental</td>
+                <td data-tipo="ano">2022</td>
+                <td data-tipo="tipoEmenda">Relatoria</td>
+                <td data-tipo="formaRepasse">Transferência Fundo a Fundo</td>
+                <td data-tipo="numeroEmenda">81000312</td>
+                <td data-tipo="convenio"></td>
+                <td data-tipo="autor">RELATOR GERAL</td>
+                <td data-tipo="funcao">Saúde</td>
+                <td data-tipo="valorRepasse">R$ 850.000,00</td>
+                <td data-tipo="valorRepassado">R$ 850.000,00</td>
+                <td data-tipo="detalhes">
+                    <button class="botao-detalhes" onclick="downloadPDF('pdf/ANO2022.850K.pdf')">
+                        Baixar PDF
+                    </button>
+                </td>
+            </tr> 
+             <!-- 2023 -->
+            <tr>
+                <td data-tipo="origem">Federal</td>
+                <td data-tipo="tipoProposta">Equipamento</td>
+                <td data-tipo="ano">2023</td>
+                <td data-tipo="tipoEmenda">Programa</td>
+                <td data-tipo="formaRepasse">Transferência Fundo a Fundo</td>
+                <td data-tipo="numeroEmenda"></td>
+                <td data-tipo="convenio"></td>
+                <td data-tipo="autor"></td>
+                <td data-tipo="funcao">Saúde</td>
+                <td data-tipo="valorRepasse">R$ 470.934,00</td>
+                <td data-tipo="valorRepassado">R$ 0,00</td>
+                <td data-tipo="detalhes">
+                    <button class="botao-detalhes" onclick="downloadPDF('pdf/ANO2023.470K.pdf')">
+                        Baixar PDF
+                    </button>
+                </td>
+            </tr> 
+            <tr>
+                <td data-tipo="origem">Federal</td>
+                <td data-tipo="tipoProposta">Incremental</td>
+                <td data-tipo="ano">2023</td>
+                <td data-tipo="tipoEmenda">Bancada</td>
+                <td data-tipo="formaRepasse">Transferência Fundo a Fundo</td>
+                <td data-tipo="numeroEmenda">71170012</td>
+                <td data-tipo="convenio"></td>
+                <td data-tipo="autor">BANCADA DO PARANA	</td>
+                <td data-tipo="funcao">Saúde</td>
+                <td data-tipo="valorRepasse">R$ 150.000,00</td>
+                <td data-tipo="valorRepassado">R$ 150.000,00</td>
+                <td data-tipo="detalhes">
+                    <button class="botao-detalhes" onclick="downloadPDF('pdf/ANO2023.150K.pdf')">
+                        Baixar PDF
+                    </button>
+                </td>
+            </tr> 
+            <tr>
+                <td data-tipo="origem">Federal</td>
+                <td data-tipo="tipoProposta">Incremental</td>
+                <td data-tipo="ano">2023</td>
+                <td data-tipo="tipoEmenda">Individual</td>
+                <td data-tipo="formaRepasse">Transferência Fundo a Fundo</td>
+                <td data-tipo="numeroEmenda">19680003</td>
+                <td data-tipo="convenio"></td>
+                <td data-tipo="autor">GIACOBO</td>
+                <td data-tipo="funcao">Saúde</td>
+                <td data-tipo="valorRepasse">R$ 687.000,00</td>
+                <td data-tipo="valorRepassado">R$ 687.000,00</td>
+                <td data-tipo="detalhes">
+                    <button class="botao-detalhes" onclick="downloadPDF('pdf/ANO2023.687K.pdf')">
+                        Baixar PDF
+                    </button>
+                </td>
+            </tr> 
+             <!-- 2024 -->
+            <tr>
+                <td data-tipo="origem">Federal</td>
+                <td data-tipo="tipoProposta">Equipamento</td>
+                <td data-tipo="ano">2024</td>
+                <td data-tipo="tipoEmenda">Programa</td>
+                <td data-tipo="formaRepasse">Transferência Fundo a Fundo</td>
+                <td data-tipo="numeroEmenda"></td>
+                <td data-tipo="convenio"></td>
+                <td data-tipo="autor"></td>
+                <td data-tipo="funcao">Saúde</td>
+                <td data-tipo="valorRepasse">R$ 14.899,00</td>
+                <td data-tipo="valorRepassado">R$ 0,00</td>
+                <td data-tipo="detalhes">
+                    <button class="botao-detalhes" onclick="downloadPDF('pdf/ANO2024.14K.pdf')">
+                        Baixar PDF
+                    </button>
+                </td>
+            </tr> 
+            <tr>
+                <td data-tipo="origem">Federal</td>
+                <td data-tipo="tipoProposta">Incremental</td>
+                <td data-tipo="ano">2024</td>
+                <td data-tipo="tipoEmenda">Bancada Obrigatoria</td>
+                <td data-tipo="formaRepasse">Transferência Fundo a Fundo</td>
+                <td data-tipo="numeroEmenda">71170008</td>
+                <td data-tipo="convenio"></td>
+                <td data-tipo="autor">BANCADA DO PARANA	</td>
+                <td data-tipo="funcao">Saúde</td>
+                <td data-tipo="valorRepasse">R$ 100.000,00</td>
+                <td data-tipo="valorRepassado">R$ 100.000,00</td>
+                <td data-tipo="detalhes"><button class="botao-detalhes" onclick="downloadPDF('pdf/ANO2024.100K.pdf')">
+                    Baixar PDF
+                </button></td>
+            </tr>
+            <tr>
+                <td data-tipo="origem">Federal</td>
+                <td data-tipo="tipoProposta">Incremental</td>
+                <td data-tipo="ano">2024</td>
+                <td data-tipo="tipoEmenda">Comissao</td>
+                <td data-tipo="formaRepasse">Transferência Fundo a Fundo</td>
+                <td data-tipo="numeroEmenda">50410004</td>
+                <td data-tipo="convenio"></td>
+                <td data-tipo="autor">COMISSÃO DA SAÚDE</td>
+                <td data-tipo="funcao">Saúde</td>
+                <td data-tipo="valorRepasse">R$ 600.000,00</td>
+                <td data-tipo="valorRepassado">R$ 600.000,00</td>
+                <td data-tipo="detalhes">
+                    <button class="botao-detalhes" onclick="downloadPDF('pdf/ANO2024.600K.pdf')">
+                        Baixar PDF
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td data-tipo="origem">Federal</td>
+                <td data-tipo="tipoProposta">Incremental</td>
+                <td data-tipo="ano">2024</td>
+                <td data-tipo="tipoEmenda">Individual</td>
+                <td data-tipo="formaRepasse">Transferência Fundo a Fundo</td>
+                <td data-tipo="numeroEmenda">40110008, 44450001</td>
+                <td data-tipo="convenio"></td>
+                <td data-tipo="autor">GLEISI HOFFMANN	&    PAULO LITRO</td>
+                <td data-tipo="funcao">Saúde</td>
+                <td data-tipo="valorRepasse">R$ 650.000,00	</td>
+                <td data-tipo="valorRepassado">R$ 650.000,00</td>
+                <td data-tipo="detalhes">
+                    <button class="botao-detalhes" onclick="downloadPDF('pdf/ANO2024.650K.pdf')">
+                        Baixar PDF
+                    </button>
+                </td>
+            </tr>
+            <!-- 2025 -->
+            <tr>
+            <td data-tipo="origem">-</td>
+            <td data-tipo="tipoProposta">-</td>
+            <td data-tipo="ano">2025</td>
+            <td data-tipo="tipoEmenda">-</td>
+            <td data-tipo="formaRepasse">-</td>
+            <td data-tipo="numeroEmenda">-</td>
+            <td data-tipo="convenio">-</td>
+            <td data-tipo="autor">-</td>
+            <td data-tipo="funcao">-</td>
+            <td data-tipo="valorRepasse">-</td>
+            <td data-tipo="valorRepassado">-</td>
+            <td data-tipo="detalhes">
+                <span id="detalhes-2025"></span>
+            </td>
+            </tr>
+
+
+        </tbody>
+    </table>
+    <script src="script.js"></script>
+</body>
+</html>
